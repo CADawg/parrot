@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, minimum-scale=0.1">
+        <title>Party Parrot</title>
+    </head>
+    
+    <body style="margin: 0px; background: #0e0e0e; overflow:hidden;">
+        <script>
+            window.onload = function() {
+                var party = document.getElementById("partyparrot");
+                var partypxl = -60;
+                var spin = 1;
+                var width = Math.max(document.body.scrollWidth,document.documentElement.scrollWidth,document.body.offsetWidth,document.documentElement.offsetWidth,document.documentElement.clientWidth);
+                
+                function partyxd() {
+                    console.log("PARTY!!!!");
+                    partypxl += add;
+                    console.log(width + " " + partypxl);
+                    if (partypxl >= width - 140) {
+                        add *= -1;
+                        spin *= -1;
+                    }
+                    
+                    if (partypxl < -60) {
+                        add *= -1;
+                        spin *= -1;
+                    }
+                    
+                    party.style.transform = "scaleX(" + spin + ")";
+
+                    party.style.left = partypxl + "px";
+                }
+                
+                var speed = 1;
+                
+                if(width > 1000) {
+                    speed = width - 1000;
+                    var add = 1;
+                    setInterval(partyxd, 1);
+                } else {
+                    speed = 1;
+                    var add = 1;
+                    console.log(add);
+                    setInterval(partyxd, (1000/width));
+                }
+            };
+        </script>
+        
+        <img id="partyparrot" style="-webkit-user-select: none; width: 200px; position: absolute; bottom: 0; left: -60px;" src="https://emojis.slackmojis.com/emojis/images/1471119458/990/party_parrot.gif">
+    </body>
+</html>
